@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titulo %}Mi Catálogo Web de Juguetes{% endblock %}</title>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+</head>
+<body>
+    <header>
+        <h1><a href="{{ url_for('catalogo.inicio') }}">🎁 Catálogo de Juguetes 🚀</a></h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('catalogo.inicio') }}">Inicio</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block contenido %}
+        
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Mi Catálogo Web | Proyecto Flask Final</p>
+    </footer>
+</body>
+</html>

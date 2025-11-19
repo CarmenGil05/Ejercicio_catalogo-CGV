@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Detalle de {{ juguete.nombre }} - Catálogo{% endblock %}
+
+{% block contenido %}
+
+    <div class="detalle-container">
+        <h2>{{ juguete.nombre }}</h2>
+        
+        <div class="detalle-info">
+            <p class="precio">Precio: <strong>{{ "%.2f"|format(juguete.precio) }} €</strong></p>
+            <p>ID del producto: <span class="id-producto">#{{ juguete.id }}</span></p>
+            
+            <h3>Descripción:</h3>
+            <p class="descripcion-completa">{{ juguete.descripcion }}</p>
+        </div>
+        
+        <div class="acciones">
+            <a href="{{ url_for('catalogo.inicio') }}" class="boton-volver">← Volver al Listado</a>
+        </div>
+    </div>
+
+{% endblock %}
