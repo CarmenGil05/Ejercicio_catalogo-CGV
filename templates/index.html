@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Revista de Juguetes{% endblock %}
+
+{% block content %}
+<h2 class="text-3xl font-extrabold text-gray-900 mb-6 border-b-2 pb-2">Juguetes Destacados ({{ elementos|length }} artículos)</h2>
+
+<div class="overflow-x-auto bg-white shadow-lg rounded-lg">
+    <table class="min-w-full divide-y divide-gray-200">
+        <thead class="bg-red-100">
+            <tr>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Foto</th> 
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nombre</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Fabricante</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Edad Mínima</th>
+                <th class="px-6 py-3"></th>
+            </tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200">
+            {% for elemento in elementos %}
+            <tr class="hover:bg-gray-50 transition duration-150">
+                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ elemento.id }}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                    <img src="{{ url_for('static', filename='img/' + elemento.imagen) }}" 
+                         alt="{{ elemento.nombre }}" 
+                         class="h-12 w-12 object-cover rounded-md border" />
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">{{ elemento.nombre }}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">{{ elemento.fabricante }}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">{{ elemento.edad_min }} +</td>
+                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                    <a href="{{ url_for('catalogo.detalle', id=elemento.id) }}" 
+                       class="text-red-600 hover:text-red-900 font-semibold transition duration-300">
+                        Ver Artículo
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

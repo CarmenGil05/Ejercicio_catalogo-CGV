@@ -1,23 +1,43 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
-{% block titulo %}Detalle de {{ juguete.nombre }} - Catálogo{% endblock %}
+{% block title %}{{ elemento.nombre }}{% endblock %}
 
-{% block contenido %}
+{% block content %}
+<nav class="mb-4">
+    <a href="{{ url_for('catalogo.index') }}" class="text-red-600 hover:text-red-800 flex items-center">
+        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+        Volver a la Revista
+    </a>
+</nav>
 
-    <div class="detalle-container">
-        <h2>{{ juguete.nombre }}</h2>
-        
-        <div class="detalle-info">
-            <p class="precio">Precio: <strong>{{ "%.2f"|format(juguete.precio) }} €</strong></p>
-            <p>ID del producto: <span class="id-producto">#{{ juguete.id }}</span></p>
-            
-            <h3>Descripción:</h3>
-            <p class="descripcion-completa">{{ juguete.descripcion }}</p>
-        </div>
-        
-        <div class="acciones">
-            <a href="{{ url_for('catalogo.inicio') }}" class="boton-volver">← Volver al Listado</a>
-        </div>
+<div class="bg-white shadow-xl rounded-xl p-8">
+    
+    <div class="mb-6 flex justify-center">
+        <img src="{{ url_for('static', filename='img/' + elemento.imagen) }}" 
+             alt="{{ elemento.nombre }}" 
+             class="h-64 w-full object-contain rounded-lg border-4 border-red-200 p-2 bg-gray-50" />
     </div>
 
+    <h2 class="text-4xl font-extrabold text-gray-900 mb-6 border-b pb-3">{{ elemento.nombre }}</h2>
+
+    <div class="space-y-4">
+        <div class="flex items-center">
+            <span class="font-semibold text-gray-700 w-24">Código:</span>
+            <span class="text-gray-900">{{ elemento.id }}</span>
+        </div>
+        <div class="flex items-center">
+            <span class="font-semibold text-gray-700 w-24">Fabricante:</span>
+            <span class="text-gray-900">{{ elemento.fabricante }}</span>
+        </div>
+        <div class="flex items-center">
+            <span class="font-semibold text-gray-700 w-24">Edad Mínima:</span>
+            <span class="text-gray-900">{{ elemento.edad_min }} años +</span>
+        </div>
+    </div>
+    
+    <div class="mt-6 border-t pt-4">
+        <h3 class="text-xl font-bold text-gray-800 mb-2">Descripción del Artículo</h3>
+        <p class="text-gray-600 leading-relaxed">{{ elemento.descripcion }}</p>
+    </div>
+</div>
 {% endblock %}

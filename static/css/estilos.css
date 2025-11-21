@@ -1,0 +1,16 @@
+/*
+Este archivo demuestra la carga correcta de archivos estáticos usando url_for().
+Las clases de Tailwind CSS se usan en los archivos HTML para el diseño, 
+pero puedes añadir aquí estilos personalizados si los necesitas.
+*/
+
+/* Ejemplo de estilo adicional no cubierto por Tailwind */
+h1 {
+    color: #991b1b; /* Rojo oscuro para los títulos principales (Navidad) */
+    font-family: Arial, sans-serif;
+}
+
+/* Estilo para simular un borde de tabla */
+table {
+    border-collapse: collapse;
+}
